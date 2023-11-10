@@ -1,40 +1,51 @@
-# cookin-up
+<h1 align="center"> Cookin Up Vue </h1>
 
-This template should help get you started developing with Vue 3 in Vite.
+<p align="center">
+  Projeto prático de Vue.js feito na trilha de formação Vue.js 3 da Alura!
+</p>
 
-## Recommended IDE Setup
+<br>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+<p align="center">
+  <img alt="Cookin Up" src=".github/cookin-up-app.png" width="100%">
+</p>
+<br /><br />
 
-## Type Support for `.vue` Imports in TS
+## 🚀 Tecnologias
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+- [Vue.js 3](https://vuejs.org/)
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## 💻 Projeto
 
-## Customize configuration
+O projeto simula um site onde é possível pesquisar receitas com base em tags pré-selecionadas.
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+<h1 align="center"> Setup Front-end</h1>
 
-## Project Setup
+## 🔥 Front-end
 
-```sh
+Instale as dependências do projeto:
+
+```
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+Rode a aplicação:
 
-```sh
+```
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+ou
 
-```sh
+```
 npm run build
 ```
+
+
+<h4 align="center">
+ <img alt="Ubuntu Linux" src=".github/ubuntu_icon.svg" width="32px">
+  <br />
+  Feito com ♥ no Ubuntu 22.04 LTS
+</h1>
