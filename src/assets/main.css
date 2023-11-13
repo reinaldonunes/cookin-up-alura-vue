@@ -45,6 +45,8 @@ body {
   font-family: var(--cabecalhos);
   font-size: 3.35625em;
   line-height: 120%; /* 4.0275em */
+  display: flex;
+  flex-direction: column;
 }
 
 .cabecalho {
