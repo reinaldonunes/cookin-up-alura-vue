@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getCategories, type ICategories } from '@/api/index';
   import Item from './Item.vue'
-
+  import FindRecipes from './FindRecipes.vue'
   export default {
       data(){
         return{
@@ -11,7 +11,8 @@
      async created(){
       this.receitas = await getCategories();
      },
-     components: { Item }
+     components: { Item, FindRecipes },
+     emits: ['addIngrediente','removeIngrediente','getRecipes']
   }
 </script>
 <template>
@@ -23,7 +24,7 @@
 
     <ul class="categorias">
       <li v-for="receita in receitas" key="receita.nome">
-        <Item :categoria="receita"/>
+        <Item :categoria="receita" @addIngrediente="$emit('addIngrediente', $event)" @removeIngrediente="$emit('removeIngrediente',$event)"/>
       </li>
     </ul>
 
@@ -31,6 +32,7 @@
       * Atenção: consideramos que vocẽ tenha em casa: sal, pimenta e água. 
     </p>
   </section>
+  <FindRecipes texto="Buscar Receitas!" @click="$emit('getRecipes')" />
 </template>
 <style>
   .selecionar-ingredientes {

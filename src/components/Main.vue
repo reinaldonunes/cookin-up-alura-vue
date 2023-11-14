@@ -1,34 +1,39 @@
 <script lang="ts">
   import SelecionarIngredientes from './SelecionarIngredientes.vue';
-  import Tag from './Tag.vue';
+  import IngredientesLista from './IngredientesLista.vue'
+  import Receitas from './Receitas.vue'
+
+  type Page = 'SelecionarIngredientes' | 'Receitas'
+
   export default {
     data() {
         return {
-            ingredientes: ["Alho", "Manteiga", "Orégano"]
+            ingredientes: [] as string[],
+            conteudo: 'SelecionarIngredientes' as Page
         };
     },
-    components: { SelecionarIngredientes, Tag }
+    methods: {
+      addIngrediente(ingrediente: string){
+        this.ingredientes.push(ingrediente);
+      },
+      removeIngrediente(ingrediente: string) {
+        this.ingredientes = this.ingredientes.filter(iLista => ingrediente !== iLista);
+      },
+      goTo(page: Page){
+        this.conteudo = page
+      }
+    },
+    components: { SelecionarIngredientes, IngredientesLista, Receitas }
 }
 </script>
 <template>
-    <main class="conteudo-principal">
-        <section>
-            <span class="subtitulo-lg sua-lista-texto">
-                Sua lista:
-            </span>
-            <ul class="ingredientes-sua-lista" v-if="ingredientes.length != 0">
-              <li v-for="ingrediente in ingredientes" :key="ingrediente">
-                <Tag :tag="ingrediente" actived />
-              </li>
-            </ul>
-            <p class="paragrafo lista-vazia" v-else>
-              <img src="../assets/imagens/icones/lista-vazia.svg" alt="Sem itens na lista" title="Sem itens na lista" />
-              Sua lista está vazia, selecione ingredientes para iniciar.
-            </p>
-        </section>
-
-        <SelecionarIngredientes />
-    </main>
+  <main class="conteudo-principal">
+    <IngredientesLista :ingredientes="ingredientes" />
+    <KeepAlive>
+      <SelecionarIngredientes @getRecipes="conteudo='Receitas'" v-if="conteudo === 'SelecionarIngredientes'" @addIngrediente="addIngrediente" @removeIngrediente="removeIngrediente" />
+      <Receitas v-else-if="conteudo === 'Receitas'" @editRecipes="goTo('SelecionarIngredientes')" />
+    </KeepAlive>
+  </main>
 </template>
 <style>
 .conteudo-principal {

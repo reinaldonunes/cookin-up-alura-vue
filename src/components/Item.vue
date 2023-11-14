@@ -1,13 +1,14 @@
 <script lang="ts">
   import type { ICategories } from '@/api';
   import type { PropType } from 'vue';
-  import Tag from './Tag.vue'
+  import TagToggle from './TagToggle.vue';
 
   export default {
     props: {
       categoria: { type: Object as PropType<ICategories>, required: true }
     },
-    components: { Tag }
+    components: { TagToggle },
+    emits: ['addIngrediente','removeIngrediente']
   }
 </script>
 <template>
@@ -18,7 +19,11 @@
     </header>
     <ul class="categoria__ingredientes">
       <li v-for="ingrediente in categoria.ingredientes" :key="ingrediente">
-        <Tag :tag="ingrediente" />
+        <TagToggle
+          :ingrediente="ingrediente"
+          @addIngrediente="$emit('addIngrediente', $event)"
+          @removeIngrediente="$emit('removeIngrediente', $event)"
+        />
       </li>
     </ul> 
   </article>
