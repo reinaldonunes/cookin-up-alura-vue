@@ -1,14 +1,17 @@
 <script lang="ts">
   import { getCategories, type ICategories } from '@/api/index';
+  import Item from './Item.vue'
+
   export default {
-     data(){
-      return{
-        receitas: [] as ICategories[]
-      }
+      data(){
+        return{
+          receitas: [] as ICategories[]
+        }
      },
      async created(){
       this.receitas = await getCategories();
-     }
+     },
+     components: { Item }
   }
 </script>
 <template>
@@ -19,7 +22,9 @@
     </p>
 
     <ul class="categorias">
-      <li v-for="receita in receitas" key="receita">{{ receita.nome }}</li>
+      <li v-for="receita in receitas" key="receita.nome">
+        <Item :categoria="receita"/>
+      </li>
     </ul>
 
     <p class="paragrafo-dica">
