@@ -16,6 +16,7 @@
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - [Vue.js 3](https://vuejs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
 
 ## 💻 Projeto
 
@@ -43,6 +44,18 @@ ou
 npm run build
 ```
 
+<br />
+
+## 💻 Formação Vue.js Alura
+
+- [Acesse o curso clicando aqui](https://www.alura.com.br/formacao-vuejs3)
+  <br /><br />
+
+## 🚀 Certificado
+
+<p align="center">
+  <img alt="Vue.js 3 + Typescript" src=".github/vuejs-certificate.png" width="100%">
+</p>
 
 <h4 align="center">
  <img alt="Ubuntu Linux" src=".github/ubuntu_icon.svg" width="32px">
