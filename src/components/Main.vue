@@ -30,8 +30,15 @@
   <main class="conteudo-principal">
     <IngredientesLista :ingredientes="ingredientes" />
     <KeepAlive>
-      <SelecionarIngredientes @getRecipes="conteudo='Receitas'" v-if="conteudo === 'SelecionarIngredientes'" @addIngrediente="addIngrediente" @removeIngrediente="removeIngrediente" />
-      <Receitas v-else-if="conteudo === 'Receitas'" @editRecipes="goTo('SelecionarIngredientes')" />
+      <SelecionarIngredientes v-if="conteudo === 'SelecionarIngredientes'"
+        @addIngrediente="addIngrediente"
+        @removeIngrediente="removeIngrediente"
+        @getRecipes="goTo('Receitas')" 
+      />
+      <Receitas v-else-if="conteudo === 'Receitas'"
+        :ingredientes="ingredientes"
+        @editRecipes="goTo('SelecionarIngredientes')"
+      />
     </KeepAlive>
   </main>
 </template>

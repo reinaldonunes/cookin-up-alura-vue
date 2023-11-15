@@ -1,19 +1,30 @@
 <script lang="ts">
+import type { PropType } from 'vue'
 import { getRecipes } from '@/api';
 import type IRecipes from '@/api';
 import FindRecipes from './FindRecipes.vue';
 import CardReceita from './ItemReceita.vue';
+import { firstListIntoSecondList } from '@/functions/lists';
 
 export default {
+  props: {
+    ingredientes: { type: Array as PropType<string[]>, required: true }
+  },
   data() {
     return {
       receitasEncontradas: [] as IRecipes[]
     };
   },
+
+
   async created() {
     const receitas = await getRecipes();
+    const ingredientesCopy = [...this.ingredientes];
 
-    this.receitasEncontradas = receitas.slice(0, 8);
+    this.receitasEncontradas = receitas.filter((receita) => {
+      const canRecipes = firstListIntoSecondList(receita.ingredientes, ingredientesCopy);
+      return canRecipes;
+    });
   },
   components: { FindRecipes, CardReceita },
   emits: ['editRecipes']
@@ -72,6 +83,8 @@ export default {
 }
 
 .receitas-wrapper {
+  width: 100%;
+  max-width: 1600px;
   margin-bottom: 3.5rem;
 }
 
@@ -84,6 +97,8 @@ export default {
   justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
+  width: 100%; 
+  max-width: 1500px;
 }
 
 .receitas-nao-encontradas {
